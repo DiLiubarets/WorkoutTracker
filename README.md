@@ -1,6 +1,6 @@
 # WorkoutTracker
 
-## (Live Demo)[https://workouts-traker.herokuapp.com/?id=5f6813b127ea180017601005]
+## [Live Demo](https://workouts-traker.herokuapp.com/?id=5f6813b127ea180017601005)
 
 # Nosql: Workout Tracker
 
