@@ -13,24 +13,38 @@ const completeButton = document.querySelector("button.complete");
 const addButton = document.querySelector("button.add-another");
 const toast = document.querySelector("#toast");
 const newWorkout = document.querySelector(".new-workout")
+const title = document.querySelector("#userTitle")
 
 let workoutType = null;
 let shouldNavigateAway = false;
 
 async function initExercise() {
-  let workout;
+
+  fetch("/api/isNew").then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    if (data.isNew) {
+      title.textContent = "Add exercise to new workout"
+    } else {
+      title.textContent = "Continue your workout"
+    }
+  }).catch(function() {
+    console.log("Error");
+  });
 
   if (location.search.split("=")[1] === undefined) {
-    workout = await API.createWorkout()
-    console.log(workout)
-  }
-  if (workout) {
+    let workout = await API.createWorkout()
     location.search = "?id=" + workout._id;
   }
 
+
+ 
 }
 
 initExercise();
+
+
+
 
 function handleWorkoutTypeChange(event) {
   workoutType = event.target.value;
